@@ -1,5 +1,8 @@
 # Contributing
 
+Pull requests are welcome. Contributions are submitted under this project's MIT
+license. Keep existing copyright and third-party license notices intact.
+
 Keep changes limited to the installer and supported patch sources. Do not add
 Studio executables, game assets, disassembly dumps, machine-specific paths,
 credentials, runtime records, or private integration code.
