@@ -75,8 +75,12 @@ is not affiliated with Roblox.
 
 ## Use
 
-Download the Windows artifact from **Actions**, extract it, and run
-`LuauStudioPatch.exe`. Choose **Install patch** or **Restore original**.
+Download **[LuauStudioPatch.exe](https://github.com/ChickenStrxps/luau-studio-patch/releases/download/v0.5.2/LuauStudioPatch.exe)**
+from [Releases](https://github.com/ChickenStrxps/luau-studio-patch/releases/tag/v0.5.2)
+and double-click it. Close Studio, then choose **Install patch**. Use **Restore
+original** to undo the patch. No Python or build tools are needed to run it.
+
+The Windows ZIP includes the same executable and all license notices.
 Keep the included license notices with the executable.
 
 Command-line status, install, and restore operations require a JSON output path:
