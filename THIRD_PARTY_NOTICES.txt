@@ -1,0 +1,10 @@
+Studio Luau Patch
+
+Luau and Lua: MIT, Roblox Corporation and Lua.org / PUC-Rio.
+See licenses/LUAU-LICENSE.txt and licenses/LUA-LICENSE.txt.
+
+The constant-space Two-Way search is adapted from musl's memmem implementation.
+See licenses/MUSL-COPYRIGHT.txt for the original notice.
+
+Roblox Studio is a separate proprietary application supplied by Roblox.
+It is not included or licensed by this project.

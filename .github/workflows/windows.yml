@@ -1,0 +1,44 @@
+name: Windows
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: windows-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Check source export
+        run: python tools/check_export.py
+      - name: Configure
+        run: cmake -S . -B build -A x64
+      - name: Build
+        run: cmake --build build --config Release
+      - name: Build patch kernels
+        shell: pwsh
+        run: |
+          $vs = & "${env:ProgramFiles(x86)}/Microsoft Visual Studio/Installer/vswhere.exe" -latest -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath
+          Import-Module "$vs/Common7/Tools/Microsoft.VisualStudio.DevShell.dll"
+          Enter-VsDevShell -VsInstallPath $vs -SkipAutomaticLocation -DevCmdArguments '-arch=x64 -host_arch=x64'
+          ./tools/build-kernels.ps1
+      - name: Check installer
+        run: python tools/smoke_installer.py build/Release/LuauStudioPatch.exe
+      - name: Package
+        run: |
+          python tools/package.py build/Release/LuauStudioPatch.exe
+          git archive --format=zip --output=dist/LuauStudioPatch-source.zip HEAD
+      - uses: actions/upload-artifact@v4
+        with:
+          name: LuauStudioPatch-windows-x64
+          path: dist/*
+          if-no-files-found: error

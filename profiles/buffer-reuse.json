@@ -1,0 +1,61 @@
+{
+  "format": 2,
+  "studio_version": "0.744.0.7441077",
+  "source_sha256": "0d798e07ca9811644af4cbd1d3a9c721d0eb37fccdd404286adc65f0aa6c77c6",
+  "target_sha256": "9f02672bf96b4105a2f7b13faf63e8bee3b4782dc04b97f6b812a8096853c0cf",
+  "source_size": 232546304,
+  "target_size": 237538816,
+  "packed_sha256": "c189d162db3836ffa39104c1eb055287f9d89bd9bc112117da9a2bc51e5b5f4a",
+  "edits": [
+    {
+      "offset": 373,
+      "length": 3,
+      "hex": "3e3709"
+    },
+    {
+      "offset": 425,
+      "length": 2,
+      "hex": "a0d3"
+    },
+    {
+      "offset": 504,
+      "length": 3,
+      "hex": "307087"
+    },
+    {
+      "offset": 508,
+      "length": 1,
+      "hex": "b0"
+    },
+    {
+      "offset": 976,
+      "length": 3,
+      "hex": "e08d98"
+    },
+    {
+      "offset": 985,
+      "length": 2,
+      "hex": "8e98"
+    },
+    {
+      "offset": 78710590,
+      "length": 5,
+      "hex": "e8bd5cd609"
+    },
+    {
+      "offset": 232546304,
+      "length": 48,
+      "hex": "488b01483b4108751b488b5110483bd07212482bd04881fa000080007706f6c27f7501c3e9574ba5f500000001000000"
+    },
+    {
+      "offset": 232546352,
+      "length": 4992420,
+      "copy_from": 227553772
+    },
+    {
+      "offset": 237538772,
+      "length": 44,
+      "hex": "0070870e2970870e2c70870e0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  ]
+}
