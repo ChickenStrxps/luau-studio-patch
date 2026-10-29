@@ -6,3 +6,5 @@
 *.ps1 text eol=lf
 *.json text eol=lf
 *.yml text eol=lf
+*.png binary
+*.gif binary

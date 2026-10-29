@@ -6,6 +6,53 @@ A small Windows installer for experimental native Luau library optimizations in
 Roblox Studio. It checks the complete executable hash, saves the original, applies
 the supported patch, and can restore the original file.
 
+## In Studio
+
+`string.find`: **6.08s → 0.80s** in a repeated-prefix stress test.
+Actual Studio capture at 1× playback; this measures workload completion, not FPS.
+
+![Original and patched string.find running the same Studio workload](docs/media/search.gif)
+
+<details>
+<summary>More library comparisons — included in the installer</summary>
+
+| `table.unpack` · 4.78× | Packed buffer bits · 1.20× |
+| --- | --- |
+| ![table.unpack before and after](docs/media/unpack.gif) | ![buffer.readbits and writebits before and after](docs/media/bits.gif) |
+
+`string.upper` · **3.29×** on 256 KiB ASCII:
+
+![ASCII case conversion before and after](docs/media/case.gif)
+
+Synthetic repeated workloads on one machine. Results depend on input and do not
+predict a game's FPS.
+
+</details>
+
+<details>
+<summary>Engine experiments — not included in the installer</summary>
+
+Historical Studio FPS tests, each against its own restored baseline:
+
+| Render priority · +6.6% | Text layout · +8.6% |
+| --- | --- |
+| ![Render priority FPS comparison in a 1600-rig scene](docs/media/render-priority.png) | ![Text layout FPS comparison with 8000 changing labels](docs/media/text-layout.png) |
+
+Fixed synthetic scenes on one PC. These prototypes are separate from the shipped
+library profile; the text-layout ownership and reentrancy review remains open.
+
+Isolated native routines:
+
+| Sphere/box predicate | Mesh vertex packing |
+| --- | --- |
+| ![Sphere predicate isolated throughput comparison](docs/media/sphere-predicate.png) | ![Mesh packing isolated throughput comparison](docs/media/mesh-packing.png) |
+
+These cards measure routine throughput, **not Studio FPS**. Later Studio tests
+did not qualify an FPS gain: sphere timings overlapped the baselines, and the
+mesh scene reached its frame cap. Full GPU-buffer equivalence remains unproven.
+
+</details>
+
 ## Compatibility
 
 - Windows x64; Studio **0.744.0.7441077**, exact supported executable only.
